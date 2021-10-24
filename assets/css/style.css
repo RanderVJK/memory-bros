@@ -26,6 +26,13 @@ body {
   box-shadow: 1px 1px 1px rgba(1, 1, 1, 0.3);
   cursor: pointer;
   transform: scale(1);
+  transform-style: preserve-3d; /* adiciona perspectiva 3d, para que o elemento nao fique achatada no plano */
+  transition: transform .9s; /* adiciona efeito de movimento ao flip do card */
+}
+
+.card:active {
+  transform: scale(0.97);
+  transition: transform .3s;
 }
 
 .card-front,
@@ -36,4 +43,14 @@ body {
   position: absolute;
   border-radius: 5px;
   background: #FFF;
+}
+
+.card-front {
+    transform: rotateY(180deg); /* antes, o verso aparecia transparente, pois ambas as imagens tem position absolute, ao girar no eixo Y, elas ficaram com os versos virados */
+}
+
+/* flip card animation */
+
+.card.flip {
+    transform: rotateY(180deg);
 }
